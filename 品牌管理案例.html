@@ -33,7 +33,7 @@
 
                 <label >
                     搜索名称关键字:
-                    <input type="text" class="form-control" v-model="keywords">
+                    <input type="text" class="form-control" v-model="keywords" v-focus>
                 </label>
             </div>  
         </div>
@@ -78,6 +78,18 @@
                 let mm = dt.getMinutes().toString().padStart(2,'0')
                 let ss = dt.getSeconds().toString().padStart(2,'0')
                 return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+            }
+        })
+
+        Vue.direvction('focus',{
+            bind:function(el){
+
+            },
+            inserted:function(el){
+                el.focus()
+            },
+            updated:function(el){
+                
             }
         })
 
