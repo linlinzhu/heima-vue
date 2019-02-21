@@ -7,8 +7,39 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+    <style>
+        .redBorder{background: red;}
+        .red{background: green;}
+    </style>
 </head>
 <body>
-    
+    <div id="app">
+        <div v-for="(item,index) in tableData" ::key="index">
+        <div :class="{'redBorder':item.red}">
+            <div>{{ item.name}}</div>
+            <div>
+                <el-button size="mini" @click="clickBtn(item.id)" type="info">编辑</el-button>
+                <p class="el-icon-error" v-show="item.tip"></p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                tableData:[{
+                    id:0,name:"lili",red:false,tip:false
+                }]
+            },
+            methods:{
+                clickBtn(id){
+                    this.tableData[id].red=!this.tableData[id].red;
+                    this.tableData[id].tip=true;        
+                }
+            }
+        })
+    </script>
 </body>
 </html>
